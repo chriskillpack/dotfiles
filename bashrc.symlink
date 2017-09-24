@@ -1,0 +1,23 @@
+export EDITOR='subl -w'
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;32'
+export GOPATH='/Users/chris/code'
+
+export HISTTIMEFORMAT='%F %T '
+export HISTCONTROL=ignoreboth
+
+alias c="cd $HOME/code/src"
+alias ..='cd ..'
+alias ...='cd ../..'
+alias gs='git status'
+alias gss='git status --short'
+alias gap='git apply --patch'
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias gcv='git commit --verbose'
+alias gbr="git for-each-ref --sort=-committerdate refs/head/ --format='%(refname)%09%(committerdate:relative)' | cut -d/ -f3- | column -t -s$'\t'"
+alias gmb='git merge-base master HEAD'
+alias grc='git rebase --continue'
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
