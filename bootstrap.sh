@@ -3,7 +3,7 @@
 # bootstrap installs things.
 # Modified from https://github.com/holman/dotfiles/blob/master/script/bootstrap
 
-cd "$(dirname "$0")/.."
+# cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 
 set -e
@@ -117,17 +117,9 @@ install_dotfiles () {
 
 install_dotfiles
 
-# If we're on a Mac, let's install and setup homebrew.
-if [ "$(uname -s)" == "Darwin" ]
-then
-  info "installing dependencies"
-  if source bin/dot | while read -r data; do info "$data"; done
-  then
-    success "dependencies installed"
-  else
-    fail "error installing dependencies"
-  fi
-fi
+# Zed editor config
+mkdir -p ~/.config/zed
+ln -sf "$PWD/zed/settings.json" ~/.config/zed/settings.json
 
 # TODO - Lots of interesting MacOS configuration options
 # https://github.com/mathiasbynens/dotfiles/blob/master/.macos
