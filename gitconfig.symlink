@@ -1,6 +1,8 @@
 [user]
 	name = Chris Killpack
 	email = chris@chriskillpack.com
+[includeIf "gitdir:~/code/src/github.com/groupargus/"]
+    path = ~/.gitconfig-groupargus
 [alias]
 	cleanup-branches = !sh - c 'git branch --merged | grep -v ^* | xargs -n 1 git branch -d'
 	co = checkout

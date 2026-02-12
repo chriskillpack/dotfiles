@@ -121,6 +121,10 @@ install_dotfiles
 mkdir -p ~/.config/zed
 ln -sf "$PWD/zed/settings.json" ~/.config/zed/settings.json
 
+# Ghostty
+mkdir -p ~/.config/ghostty
+ln -sf "$PWD/ghostty/config" ~/.config/ghostty/config
+
 # TODO - Lots of interesting MacOS configuration options
 # https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 
