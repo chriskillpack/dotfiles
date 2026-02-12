@@ -2,12 +2,14 @@
 	name = Chris Killpack
 	email = chris@chriskillpack.com
 [alias]
+	cleanup-branches = !sh - c 'git branch --merged | grep -v ^* | xargs -n 1 git branch -d'
 	co = checkout
 	cp = cherry-pick
-	cleanup-branches = !sh - c 'git branch --merged | grep -v ^* | xargs -n 1 git branch -d'
 	fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
 	lg = log --all --graph --abbrev-commit --date=relative --pretty=format:'%C(bold blue)%h - %C(reset)%C(green)(%ar)%C(reset) - %s %C(dim)- %an%C(reset)%C(yellow)%d'
 	nit = commit --amend --no-edit
+[branch]
+	sort = -committerdate
 [color]
 	diff = auto
 	status = auto
@@ -17,6 +19,13 @@
 	excludesfile = ~/.gitignore
 [diff]
 	renames = true
+	mnemonicPrefix = true
+	colorMoved = plain
+	algorithm = histogram
 [merge]
 	summary = true
 	conflictstyle = diff3
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true

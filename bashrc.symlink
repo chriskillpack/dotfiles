@@ -1,4 +1,3 @@
-export EDITOR='subl -w'
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 export GOPATH='/Users/chris/code'
@@ -11,15 +10,19 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias gd='git diff'
 alias gdc='git diff --cached'
+alias gdw='git diff --word-diff=color --word-diff-regex=.'
 alias gs='git status'
 alias gss='git status --short'
 alias gap='git add --patch'
 alias gco='git checkout'
 alias gcb='git checkout -b'
+alias gcm='git checkout $(git_main_branch)'
+alias gcp='git checkout -p'
 alias gcv='git commit --verbose'
 alias gbr="git for-each-ref --sort=-committerdate refs/head/ --format='%(refname)%09%(committerdate:relative)' | cut -d/ -f3- | column -t -s$'\t'"
-alias gmb='git merge-base master HEAD'
+alias gmb='git merge-base main HEAD'
 alias grc='git rebase --continue'
+alias gfpa='git fetch --prune --all'
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
