@@ -1,0 +1,6 @@
+# According to https://unix.stackexchange.com/a/71258, EDITOR env var
+# should be set here because this file is always loaded first by Zsh.
+export EDITOR="zed -w"
+
+# uv
+export PATH="/Users/chris/.local/bin:$PATH"
