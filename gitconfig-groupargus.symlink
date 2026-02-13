@@ -1,2 +1,4 @@
 [user]
     email = chris.killpack@groupargus.com
+[url "ssh://git@github.com/groupargus"]
+	insteadOf = https://github.com/groupargus

@@ -17,8 +17,6 @@
 	status = auto
 	branch = auto
 	interactive = auto
-[core]
-	excludesfile = ~/.gitignore
 [diff]
 	renames = true
 	mnemonicPrefix = true
