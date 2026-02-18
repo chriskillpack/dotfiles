@@ -7,9 +7,14 @@
 	cleanup-branches = "!sh -c 'git branch --merged | grep -v \"^\\*\" | xargs -n 1 git branch -d'"
 	co = checkout
 	cp = cherry-pick
+	# Amend a previous commit
 	fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
+	# Switch to a branch, creating it if necessary
+	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 	lg = log --all --graph --abbrev-commit --date=relative --pretty=format:'%C(bold blue)%h - %C(reset)%C(green)(%ar)%C(reset) - %s %C(dim)- %an%C(reset)%C(yellow)%d'
+	# Amend HEAD without prompting
 	nit = commit --amend --no-edit
+	up = pull --rebase --autostash
 [branch]
 	sort = -committerdate
 [color]
