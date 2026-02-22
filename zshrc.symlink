@@ -1,0 +1,63 @@
+# From https://mac.install.guide/terminal/zshrc-zprofile, set aliases
+# in this file.
+source $HOME/.aliases
+
+# Update the function search path to include Homebrew's zsh folder and our own
+# folder for custom completions.
+fpath=(
+    ~/.zsh
+    $(brew --prefix)/share/zsh/site-functions
+    $fpath
+)
+
+# Specify that the first time compinit is referenced it should be loaded from fpath
+# and then executed. See https://unix.stackexchange.com/a/33898
+autoload -Uz compinit && compinit
+
+setopt HIST_FIND_NO_DUPS # do not display previously found command
+setopt HIST_IGNORE_DUPS  # do not save duplicate of prior command
+setopt HIST_IGNORE_SPACE # do not save if line starts with space
+setopt complete_aliases
+
+# Force zsh to show a selection menu when there are multiple matches
+zstyle ':completion:*' menu select
+
+# Load in local zshrc settings we don't want in dotfiles
+[[ -f ~/.zshrc_local ]] && source ~/.zshrc_local
+
+path+=('/Users/chris/bin')
+
+# git_main_branch returns the main branch for the current repo. This is usually main
+# or historically master. For repos created locally this can fail, fix with
+#   git remote set-head origin --auto
+function git_main_branch() {
+    def=`git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`
+    echo $def
+}
+
+# hexfiend convenience
+hexf() {
+    open -a "Hex Fiend" $1 $2
+}
+
+# use spotlight to find file by name
+mdff() {
+    mdfind -literal kMDItemFSName = \"$1\"
+}
+
+function tree() {
+    local target_dir="${1:-.}"
+    eza --tree "$target_dir"
+}
+
+function mkcd() {
+    \mkdir -p "$1"
+    cd "$1"
+}
+
+# Prepend path with path to go binaries. Note GOBIN takes precedence over GOPATH/bin
+# but by default GOBIN is not set.
+path=("$(go env GOPATH)/bin" $path)
+
+# Let's go startship!
+eval "$(starship init zsh)"

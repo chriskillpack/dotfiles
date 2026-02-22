@@ -1,0 +1,16 @@
+alias c="cd $HOME/code/src"
+alias ..='cd ..'
+alias ...='cd ../..'
+alias gb='git branch'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gs='git status'
+alias gss='git status --short'
+alias gap='git add --patch'
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias gcp='git checkout -p'
+alias gcv='git commit --verbose'
+alias gbr="git for-each-ref --sort=-committerdate refs/head/ --format='%(refname)%09%(committerdate:relative)' | cut -d/ -f3- | column -t -s$'\t'"
+alias gmb='git merge-base main HEAD'
+alias grc='git rebase --continue'
