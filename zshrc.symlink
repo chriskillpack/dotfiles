@@ -25,7 +25,8 @@ zstyle ':completion:*' menu select
 # Load in local zshrc settings we don't want in dotfiles
 [[ -f ~/.zshrc_local ]] && source ~/.zshrc_local
 
-path+=('/Users/chris/bin')
+# Where Go should install binaries to
+export GOBIN=$HOME/.local/bin
 
 # git_main_branch returns the main branch for the current repo. This is usually main
 # or historically master. For repos created locally this can fail, fix with
@@ -54,10 +55,6 @@ function mkcd() {
     \mkdir -p "$1"
     cd "$1"
 }
-
-# Prepend path with path to go binaries. Note GOBIN takes precedence over GOPATH/bin
-# but by default GOBIN is not set.
-path=("$(go env GOPATH)/bin" $path)
 
 # Let's go startship!
 eval "$(starship init zsh)"

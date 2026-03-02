@@ -2,5 +2,7 @@
 # should be set here because this file is always loaded first by Zsh.
 export EDITOR="zed -w"
 
-# uv
+# FHS convention is that user-installed stuff goes in ~/.local. uv
+# will install tools into ~/.local/bin, other third party tools also
+# put stuff there.
 export PATH="/Users/chris/.local/bin:$PATH"
