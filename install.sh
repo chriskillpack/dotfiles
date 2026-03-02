@@ -121,6 +121,18 @@ install_dotfiles () {
   done
 }
 
+install_binfiles () {
+    info 'installing binfiles'
+
+    local overwrite_all=false backup_all=false skip_all=false
+
+    for src in $(find -H "$PWD/bin/" -type f -mindepth 1 -maxdepth 2)
+    do
+        dst="$HOME/.local/bin/$(basename "${src}")"
+        link_file "$src" "$dst"
+    done
+}
+
 install_dotfiles
 
 # Zed editor config
@@ -130,6 +142,9 @@ ln -sf "$PWD/zed/settings.json" ~/.config/zed/settings.json
 # Ghostty
 mkdir -p ~/.config/ghostty
 ln -sf "$PWD/ghostty/config" ~/.config/ghostty/config
+
+# local bin utilities
+install_binfiles
 
 # TODO - Lots of interesting MacOS configuration options
 # https://github.com/mathiasbynens/dotfiles/blob/master/.macos
