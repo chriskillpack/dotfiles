@@ -56,5 +56,8 @@ function mkcd() {
     cd "$1"
 }
 
+# fzf shell integration
+source <(fzf --zsh)
+
 # Let's go startship!
 eval "$(starship init zsh)"
